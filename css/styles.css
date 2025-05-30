@@ -177,33 +177,22 @@ main {
 
 /* About Section Styles */
 .about-section {
-    padding: 8rem 2rem;
+    padding: 60px 20px;
     background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
     position: relative;
     overflow: hidden;
 }
 
-.about-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 20%, rgba(0, 207, 255, 0.03) 0%, transparent 70%);
-    pointer-events: none;
-}
-
 .about-container {
-    max-width: var(--max-width);
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .about-content {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1fr 0.5fr;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
 }
 
 .about-text {
@@ -244,20 +233,20 @@ main {
     display: flex;
     align-items: flex-start;
     margin-bottom: 1.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 0.03);
     border-radius: var(--border-radius);
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .features-list li:hover {
-    transform: translateX(10px);
+    transform: translateX(5px);
     background: rgba(255, 255, 255, 0.05);
 }
 
 .feature-icon {
     font-size: 1.5rem;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
     flex-shrink: 0;
 }
 
@@ -268,7 +257,7 @@ main {
 .feature-text strong {
     color: var(--primary-color);
     display: block;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .closing-text {
@@ -283,24 +272,9 @@ main {
 .about-visual {
     position: relative;
     height: 100%;
-    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.tech-pattern {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.1;
-    animation: rotate 20s linear infinite;
-}
-
-.blob-shape {
-    width: 100%;
-    height: 100%;
-    opacity: 0.5;
 }
 
 .tech-icons {
@@ -309,44 +283,22 @@ main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .tech-icons i {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--primary-color);
-    animation: pulse 2s ease-in-out infinite;
+    opacity: 0.8;
+    transition: all 0.3s ease;
 }
 
-.tech-icons i:nth-child(2) {
-    animation-delay: 0.5s;
-}
-
-.tech-icons i:nth-child(3) {
-    animation-delay: 1s;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
+.tech-icons i:hover {
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
 /* Responsive styles for About section */
@@ -357,13 +309,13 @@ main {
     }
 
     .about-visual {
-        min-height: 300px;
+        display: none;
     }
 }
 
 @media (max-width: 768px) {
     .about-section {
-        padding: 6rem 1.5rem;
+        padding: 40px 20px;
     }
 
     .section-title {
@@ -375,11 +327,12 @@ main {
     }
 
     .features-list li {
-        padding: 0.75rem;
+        padding: 1rem;
     }
 
     .feature-icon {
         font-size: 1.25rem;
+        margin-right: 1rem;
     }
 
     .closing-text {
