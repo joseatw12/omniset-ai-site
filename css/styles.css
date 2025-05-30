@@ -177,18 +177,46 @@ main {
 
 /* About Section Styles */
 .about-section {
-    padding: 60px 20px;
+    padding: 80px 24px;
+    margin: 60px 0;
     background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
     position: relative;
     overflow: hidden;
 }
 
+.about-section::before,
+.about-section::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(0, 224, 255, 0.2), 
+        transparent
+    );
+}
+
+.about-section::before {
+    top: 0;
+}
+
+.about-section::after {
+    bottom: 0;
+}
+
 .about-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .about-content {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 0.5fr;
     gap: 4rem;
@@ -201,38 +229,69 @@ main {
 }
 
 .section-title {
-    color: var(--primary-color);
     font-size: 2.5rem;
-    margin-bottom: 2rem;
     font-weight: 700;
+    color: #00e0ff;
+    margin-bottom: 24px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    width: 60px;
+    height: 2px;
+    background: #00e0ff;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.section-title:hover::after {
+    width: 100px;
 }
 
 .lead-text {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--text-color);
     margin-bottom: 2rem;
     line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(224, 224, 224, 0.9);
+    margin-bottom: 1.5rem;
 }
 
 .features-list {
     margin: 3rem 0;
+    text-align: left;
 }
 
 .features-list h3 {
     color: var(--text-color);
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
+    text-align: center;
 }
 
 .features-list ul {
     list-style: none;
     padding: 0;
+    display: grid;
+    gap: 1.5rem;
 }
 
 .features-list li {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1.5rem;
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.03);
     border-radius: var(--border-radius);
@@ -245,9 +304,20 @@ main {
 }
 
 .feature-icon {
-    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
     margin-right: 1.5rem;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 224, 255, 0.1);
+    border-radius: 50%;
+}
+
+.feature-icon i {
+    font-size: 1.2rem;
+    color: #00e0ff;
 }
 
 .feature-text {
@@ -255,18 +325,23 @@ main {
 }
 
 .feature-text strong {
-    color: var(--primary-color);
+    color: #00e0ff;
     display: block;
     margin-bottom: 0.5rem;
+    font-size: 1.1rem;
 }
 
 .closing-text {
     font-size: 1.1rem;
     color: var(--text-color);
     line-height: 1.6;
-    border-left: 3px solid var(--primary-color);
+    border-left: 3px solid #00e0ff;
     padding-left: 1.5rem;
     margin-top: 2rem;
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .about-visual {
@@ -286,12 +361,12 @@ main {
     padding: 2rem;
     background: rgba(255, 255, 255, 0.02);
     border-radius: var(--border-radius);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 224, 255, 0.1);
 }
 
 .tech-icons i {
     font-size: 2rem;
-    color: var(--primary-color);
+    color: #00e0ff;
     opacity: 0.8;
     transition: all 0.3s ease;
 }
@@ -311,11 +386,16 @@ main {
     .about-visual {
         display: none;
     }
+
+    .features-list ul {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
     .about-section {
-        padding: 40px 20px;
+        padding: 60px 20px;
+        margin: 40px 0;
     }
 
     .section-title {
@@ -327,12 +407,17 @@ main {
     }
 
     .features-list li {
-        padding: 1rem;
+        padding: 1.2rem;
     }
 
     .feature-icon {
-        font-size: 1.25rem;
+        width: 32px;
+        height: 32px;
         margin-right: 1rem;
+    }
+
+    .feature-icon i {
+        font-size: 1rem;
     }
 
     .closing-text {
