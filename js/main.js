@@ -9,7 +9,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         // Get computed styles to account for any CSS variables
         const styles = getComputedStyle(document.documentElement);
-        const scrollMargin = parseInt(styles.getPropertyValue('--scroll-margin') || '100');
+        const baseScrollMargin = parseInt(styles.getPropertyValue('--scroll-margin') || '120');
+        
+        // Add additional margin for specific sections
+        let extraMargin = 20; // Default extra margin for sections
+        if (target.id === 'solutions') {
+            extraMargin = 30; // Extra margin for solutions section
+        }
+        
+        // Calculate the final scroll margin
+        const scrollMargin = baseScrollMargin + extraMargin;
         
         // Calculate the scroll position
         const elementPosition = target.getBoundingClientRect().top;
@@ -96,7 +105,15 @@ window.addEventListener('scroll', updateHeaderOnScroll);
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     const styles = getComputedStyle(document.documentElement);
-    const scrollMargin = parseInt(styles.getPropertyValue('--scroll-margin') || '100');
+    const baseScrollMargin = parseInt(styles.getPropertyValue('--scroll-margin') || '120');
+    
+    // Add additional margin for specific sections
+    let extraMargin = 20; // Default extra margin for sections
+    if (element.id === 'solutions') {
+        extraMargin = 30; // Extra margin for solutions section
+    }
+    
+    const scrollMargin = baseScrollMargin + extraMargin;
     
     return (
         rect.top >= -rect.height + scrollMargin &&
