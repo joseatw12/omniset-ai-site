@@ -815,4 +815,47 @@ section {
         height: 36px;
         margin-right: 6px;
     }
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00e0ff;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00e0ff;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Active state for navigation links */
+.nav-links a.active,
+.nav-links a:active {
+    color: #00e0ff;
+}
+
+.nav-links a.active::after {
+    width: 100%;
 } 

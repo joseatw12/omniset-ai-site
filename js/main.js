@@ -204,4 +204,50 @@ function createParticle() {
 }
 
 // Create particles periodically
-setInterval(createParticle, 300); 
+setInterval(createParticle, 300);
+
+// Handle active state for navigation links based on scroll position
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function setActiveLink() {
+        const scrollPosition = window.scrollY + 100; // Offset for better accuracy
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // Set active link on scroll
+    window.addEventListener('scroll', setActiveLink);
+    
+    // Set active link on page load
+    setActiveLink();
+
+    // Smooth scroll for navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}); 
