@@ -54,6 +54,22 @@ body {
     align-items: center;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo a {
+    display: block;
+    text-decoration: none;
+}
+
+.logo-image {
+    height: calc(var(--header-height) - 30px);
+    width: auto;
+    object-fit: contain;
+}
+
 .logo h1 {
     color: var(--primary-color);
     font-size: 1.5rem;
@@ -557,6 +573,10 @@ section {
     
     .contact-info a {
         font-size: 1rem;
+    }
+
+    .logo-image {
+        height: calc(var(--header-height) - 50px);
     }
 }
 
