@@ -74,7 +74,7 @@ if (contactForm) {
     });
 }
 
-// Header scroll effect with progress indicator
+// Header scroll effect
 const header = document.querySelector('.header');
 let lastScroll = 0;
 const scrollThreshold = 100;
@@ -94,9 +94,6 @@ function updateHeaderOnScroll() {
     }
     
     lastScroll = currentScroll;
-    
-    // Update active navigation link
-    updateActiveNavLink();
 }
 
 window.addEventListener('scroll', updateHeaderOnScroll);

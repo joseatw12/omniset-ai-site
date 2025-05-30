@@ -57,6 +57,8 @@ body {
 .logo {
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .logo a {
@@ -67,14 +69,13 @@ body {
 .logo-image {
     height: calc(var(--header-height) - 30px);
     width: auto;
+    max-width: 200px;
     object-fit: contain;
+    display: block;
 }
 
 .logo h1 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    display: none;
 }
 
 .nav-links a {
@@ -111,6 +112,7 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .hero-background {
@@ -119,7 +121,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 0;
 }
 
 .gradient-overlay {
