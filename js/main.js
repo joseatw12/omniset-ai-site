@@ -2,17 +2,27 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
+        
+        // Get the target element
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const headerOffset = 100;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        if (!target) return;
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
+        // Get computed styles to account for any CSS variables
+        const styles = getComputedStyle(document.documentElement);
+        const scrollMargin = parseInt(styles.getPropertyValue('--scroll-margin') || '100');
+        
+        // Calculate the scroll position
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - scrollMargin;
+
+        // Perform the scroll
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+
+        // Update active state of navigation links
+        updateActiveNavLink();
     });
 });
 
@@ -62,7 +72,6 @@ const scrollThreshold = 100;
 
 function updateHeaderOnScroll() {
     const currentScroll = window.pageYOffset;
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     
     // Update header background opacity based on scroll
     const scrolled = Math.min(currentScroll / 500, 1);
@@ -76,14 +85,52 @@ function updateHeaderOnScroll() {
     }
     
     lastScroll = currentScroll;
+    
+    // Update active navigation link
+    updateActiveNavLink();
 }
 
 window.addEventListener('scroll', updateHeaderOnScroll);
 
+// Helper function to check if element is in viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    const styles = getComputedStyle(document.documentElement);
+    const scrollMargin = parseInt(styles.getPropertyValue('--scroll-margin') || '100');
+    
+    return (
+        rect.top >= -rect.height + scrollMargin &&
+        rect.top <= window.innerHeight - scrollMargin &&
+        rect.left >= 0 &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Update active navigation link based on scroll position
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    sections.forEach(section => {
+        if (isInViewport(section)) {
+            const id = section.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}
+
+// Initial check for active navigation link
+updateActiveNavLink();
+
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: `-${getComputedStyle(document.documentElement).getPropertyValue('--scroll-margin')} 0px -50px 0px`
 };
 
 // Animate elements when they come into view
@@ -143,36 +190,4 @@ function createParticle() {
 }
 
 // Create particles periodically
-setInterval(createParticle, 300);
-
-// Helper function to check if element is in viewport
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-// Update active navigation link based on scroll position
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    
-    sections.forEach(section => {
-        if (isInViewport(section)) {
-            const id = section.getAttribute('id');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${id}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-}
-
-window.addEventListener('scroll', updateActiveNavLink);
-updateActiveNavLink(); // Initial check 
+setInterval(createParticle, 300); 

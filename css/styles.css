@@ -8,6 +8,8 @@
     --card-bg: rgba(255, 255, 255, 0.03);
     --max-width: 1200px;
     --border-radius: 12px;
+    --header-height: 70px;
+    --scroll-margin: 100px;
 }
 
 /* Base styles */
@@ -19,6 +21,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--scroll-margin);
 }
 
 body {
@@ -31,6 +34,7 @@ body {
 
 /* Header and Navigation */
 .header {
+    height: var(--header-height);
     background-color: rgba(10, 25, 48, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
@@ -451,8 +455,18 @@ body {
     }
 }
 
+/* Section common styles */
+section {
+    scroll-margin-top: var(--scroll-margin);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    :root {
+        --header-height: 100px;
+        --scroll-margin: 120px;
+    }
+    
     .nav-container {
         flex-direction: column;
         text-align: center;
@@ -486,6 +500,10 @@ body {
 }
 
 @media (max-width: 480px) {
+    :root {
+        --scroll-margin: 110px;
+    }
+    
     .hero h2 {
         font-size: 2rem;
     }
