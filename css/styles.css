@@ -30,6 +30,7 @@ body {
     color: var(--text-color);
     background-color: var(--dark-bg);
     overflow-x: hidden;
+    position: relative;
 }
 
 /* Header and Navigation */
@@ -57,12 +58,12 @@ body {
     z-index: 1;
 }
 
+/* Logo Styles */
 .logo {
     display: flex;
     align-items: center;
     position: relative;
     z-index: 2;
-    isolation: isolate;
 }
 
 .logo a {
@@ -78,48 +79,22 @@ body {
     max-height: 60px;
     width: auto;
     margin-right: 12px;
-    display: inline-block;
+    display: block;
     object-fit: contain;
     transition: transform 0.2s ease;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
 }
 
 .logo a:hover .site-logo {
     transform: scale(1.02);
 }
 
-/* Remove old logo styles */
-.logo-image {
-    display: none;
-}
-
-.logo h1 {
-    display: none;
-}
-
-.nav-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    margin-left: 2.5rem;
-    transition: color 0.3s ease;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+/* Main Content Sections */
+main {
     position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--primary-color);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
+    z-index: 1;
 }
 
 /* Hero Section */
@@ -140,6 +115,7 @@ body {
     right: 0;
     bottom: 0;
     z-index: -1;
+    pointer-events: none;
 }
 
 .gradient-overlay {
@@ -170,10 +146,9 @@ body {
 }
 
 .hero-content {
-    max-width: var(--max-width);
-    margin: 0 auto;
     position: relative;
     z-index: 1;
+    pointer-events: auto;
 }
 
 .hero h2 {
@@ -217,10 +192,9 @@ body {
 /* About Section */
 .about {
     padding: 8rem 2rem;
-    max-width: var(--max-width);
-    margin: 0 auto;
     position: relative;
     isolation: isolate;
+    background-color: var(--dark-bg);
 }
 
 .about h2 {
@@ -256,10 +230,9 @@ body {
 /* Solutions Section */
 .solutions {
     padding: 8rem 2rem;
-    background-color: rgba(10, 25, 48, 0.5);
-    scroll-margin-top: calc(var(--scroll-margin) + 30px);
     position: relative;
     isolation: isolate;
+    background-color: rgba(10, 25, 48, 0.5);
 }
 
 .solutions h2 {
@@ -333,9 +306,9 @@ body {
 /* Contact Section */
 .contact {
     padding: 8rem 2rem;
-    background: var(--darker-bg);
     position: relative;
     isolation: isolate;
+    background-color: var(--darker-bg);
 }
 
 .contact h2 {
@@ -548,6 +521,12 @@ section {
 }
 
 /* Responsive Design */
+@media (min-width: 1200px) {
+    .site-logo {
+        height: 52px;
+    }
+}
+
 @media (max-width: 768px) {
     :root {
         --header-height: 100px;
