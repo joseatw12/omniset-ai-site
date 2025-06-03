@@ -7,22 +7,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(this.getAttribute('href'));
         if (!target) return;
 
-        // Get computed styles to account for any CSS variables
-        const styles = getComputedStyle(document.documentElement);
-        const baseScrollMargin = parseInt(styles.getPropertyValue('--scroll-margin') || '120');
-        
-        // Add additional margin for specific sections
-        let extraMargin = 20; // Default extra margin for sections
-        if (target.id === 'solutions') {
-            extraMargin = 30; // Extra margin for solutions section
-        }
-        
-        // Calculate the final scroll margin
-        const scrollMargin = baseScrollMargin + extraMargin;
+        // Use a fixed offset for sticky header (120px for desktop, 140px for mobile)
+        let offset = 120;
+        if (window.innerWidth <= 768) offset = 140;
         
         // Calculate the scroll position
         const elementPosition = target.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - scrollMargin;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
 
         // Perform the scroll
         window.scrollTo({
@@ -82,19 +73,15 @@ let lastScroll = 0;
 const scrollThreshold = 100;
 
 function updateHeaderOnScroll() {
+    // Always use matte black background
+    header.style.backgroundColor = '#0a0a0a';
+    // Hide/show header based on scroll direction (keep this logic)
     const currentScroll = window.pageYOffset;
-    
-    // Update header background opacity based on scroll
-    const scrolled = Math.min(currentScroll / 500, 1);
-    header.style.backgroundColor = `rgba(10, 25, 48, ${0.8 + scrolled * 0.2})`;
-    
-    // Hide/show header based on scroll direction
     if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
         header.style.transform = 'translateY(-100%)';
     } else {
         header.style.transform = 'translateY(0)';
     }
-    
     lastScroll = currentScroll;
 }
 
