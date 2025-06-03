@@ -23,7 +23,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: var(--scroll-margin);
+    scroll-padding-top: 140px;
 }
 
 body {
@@ -402,6 +402,22 @@ main {
     .closing-text {
         font-size: 1rem;
         padding-left: 1rem;
+    }
+
+    html {
+        scroll-padding-top: 160px;
+    }
+
+    .nav-links {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links a {
+        padding: 0 0.5rem;
+        font-size: 0.95rem;
+        min-width: 44px;
+        min-height: 44px;
     }
 }
 
