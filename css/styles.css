@@ -169,34 +169,121 @@ body {
 
 /* Mobile specific improvements */
 @media (max-width: 768px) {
+    :root {
+        --header-height: 80px;
+        --scroll-margin: 140px;
+    }
+    
+    section {
+        scroll-margin-top: calc(var(--scroll-margin) + 30px);
+    }
+    
+    .solutions {
+        scroll-margin-top: calc(var(--scroll-margin) + 40px);
+    }
+    
+    .header {
+        height: 80px;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.3rem 1rem;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        margin-bottom: 0.2rem;
+    }
+
+    .logo h1 {
+        font-size: 1.4rem;
+        margin: 0;
+    }
+
+    .nav-links {
+        gap: 0.2rem;
+        flex-wrap: nowrap;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .nav-links a {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.8rem;
+        min-width: 44px;
+        min-height: 32px;
+        border-radius: 8px;
+        flex: 1;
+        max-width: 70px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero {
+        padding-top: calc(80px + 2rem);
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .solutions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about p {
+        font-size: 1rem;
+    }
+
+    .contact-info {
+        gap: 0.8rem;
+    }
+    
+    .contact-info a {
+        font-size: 1rem;
+    }
+
+    .site-logo {
+        height: 42px;
+        margin-right: 8px;
+    }
+
+    html {
+        scroll-padding-top: 160px;
+    }
+
     body {
         font-size: 16px;
-        /* Better text rendering on small screens */
         text-size-adjust: none;
         -webkit-text-size-adjust: none;
     }
     
-    /* Ensure all touch targets meet Apple guidelines */
     .nav-links a, .cta-button, .submit-button {
-        min-height: 48px;
+        min-height: 44px;
         font-size: 1rem;
-        /* Better touch feedback */
         -webkit-tap-highlight-color: rgba(0,255,255,0.15);
     }
     
-    /* Improve viewport on iPhone */
     .hero {
-        /* Account for dynamic viewport */
         height: 100vh;
         height: 100dvh;
         min-height: 600px;
     }
     
-    /* Better form handling on mobile */
     .form-group input, .form-group textarea {
         font-size: 16px;
         padding: 1.2rem;
-        /* Prevent zoom and improve UX */
         -webkit-appearance: none;
         appearance: none;
     }
@@ -542,81 +629,6 @@ main {
 
     .features-list ul {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    :root {
-        --header-height: 100px;
-        --scroll-margin: 140px;
-    }
-    
-    section {
-        scroll-margin-top: calc(var(--scroll-margin) + 30px);
-    }
-    
-    .solutions {
-        scroll-margin-top: calc(var(--scroll-margin) + 40px);
-    }
-    
-    .nav-container {
-        flex-direction: column;
-        text-align: center;
-        padding: 0.5rem 1rem;
-        height: 100%;
-        justify-content: center;
-    }
-
-    .nav-links {
-        gap: 0.3rem;
-        flex-wrap: nowrap;
-        justify-content: center;
-        margin-top: 0.5rem;
-        width: 100%;
-    }
-    
-    .nav-links a {
-        padding: 0.3rem 0.4rem;
-        font-size: 0.85rem;
-        min-width: 40px;
-        min-height: 40px;
-        border-radius: 8px;
-        flex: 1;
-        max-width: 80px;
-        text-align: center;
-    }
-
-    .hero h2 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .solutions-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about p {
-        font-size: 1rem;
-    }
-
-    .contact-info {
-        gap: 0.8rem;
-    }
-    
-    .contact-info a {
-        font-size: 1rem;
-    }
-
-    .site-logo {
-        height: 42px;
-        margin-right: 8px;
-    }
-
-    html {
-        scroll-padding-top: 160px;
     }
 }
 
@@ -995,81 +1007,6 @@ section {
 @media (min-width: 1200px) {
     .site-logo {
         height: 52px;
-    }
-}
-
-@media (max-width: 768px) {
-    :root {
-        --header-height: 100px;
-        --scroll-margin: 140px;
-    }
-    
-    section {
-        scroll-margin-top: calc(var(--scroll-margin) + 30px);
-    }
-    
-    .solutions {
-        scroll-margin-top: calc(var(--scroll-margin) + 40px);
-    }
-    
-    .nav-container {
-        flex-direction: column;
-        text-align: center;
-        padding: 0.5rem 1rem;
-        height: 100%;
-        justify-content: center;
-    }
-
-    .nav-links {
-        gap: 0.3rem;
-        flex-wrap: nowrap;
-        justify-content: center;
-        margin-top: 0.5rem;
-        width: 100%;
-    }
-    
-    .nav-links a {
-        padding: 0.3rem 0.4rem;
-        font-size: 0.85rem;
-        min-width: 40px;
-        min-height: 40px;
-        border-radius: 8px;
-        flex: 1;
-        max-width: 80px;
-        text-align: center;
-    }
-
-    .hero h2 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .solutions-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about p {
-        font-size: 1rem;
-    }
-
-    .contact-info {
-        gap: 0.8rem;
-    }
-    
-    .contact-info a {
-        font-size: 1rem;
-    }
-
-    .site-logo {
-        height: 42px;
-        margin-right: 8px;
-    }
-
-    html {
-        scroll-padding-top: 160px;
     }
 }
 
