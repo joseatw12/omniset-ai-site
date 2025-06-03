@@ -43,34 +43,36 @@ if (contactForm) {
         field.setAttribute('placeholder', ' ');
     });
 
-    contactForm.addEventListener('submit', function(e) {
+    // AJAX submit for Formspree
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
-        // Get form data
+        const formSuccess = document.getElementById('form-success');
         const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', data);
-        
-        // Show success message
-        const button = this.querySelector('button');
-        const originalText = button.textContent;
-        
-        button.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        button.style.backgroundColor = '#00b4d8';
-        
-        // Reset form and button after delay
-        setTimeout(() => {
-            this.reset();
-            button.textContent = originalText;
-            button.style.backgroundColor = '';
-            
-            // Reset floating labels
-            this.querySelectorAll('input, textarea').forEach(field => {
-                field.setAttribute('placeholder', ' ');
+        try {
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
             });
-        }, 3000);
+            if (response.ok) {
+                this.reset();
+                if (formSuccess) {
+                    formSuccess.style.display = 'block';
+                }
+            } else {
+                if (formSuccess) {
+                    formSuccess.style.display = 'block';
+                    formSuccess.textContent = 'Sorry, there was an error. Please try again.';
+                    formSuccess.style.color = '#ff4d4f';
+                }
+            }
+        } catch (error) {
+            if (formSuccess) {
+                formSuccess.style.display = 'block';
+                formSuccess.textContent = 'Sorry, there was an error. Please try again.';
+                formSuccess.style.color = '#ff4d4f';
+            }
+        }
     });
 }
 

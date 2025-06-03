@@ -147,21 +147,22 @@
 
         <section id="contact" class="contact">
             <h2>Let's Build the Future Together</h2>
-            <form id="contact-form" class="contact-form">
+            <form id="contact-form" class="contact-form" action="https://formspree.io/f/mvgrovdk" method="POST">
                 <div class="form-group">
-                    <input type="text" id="name" required>
+                    <input type="text" name="name" id="name" required>
                     <label for="name">Name</label>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" required>
+                    <input type="email" name="email" id="email" required>
                     <label for="email">Email</label>
                 </div>
                 <div class="form-group">
-                    <textarea id="message" required></textarea>
+                    <textarea name="message" id="message" required></textarea>
                     <label for="message">Message</label>
                 </div>
                 <button type="submit" class="submit-button">Send Message</button>
             </form>
+            <div id="form-success" style="display:none; color:#00CFFF; text-align:center; margin-top:1.5rem; font-size:1.1rem;">Thank you! Your message has been sent.</div>
             <div class="contact-info">
                 <a href="mailto:jardila@omnisetai.com"><i class="fas fa-envelope"></i> jardila@omnisetai.com</a>
                 <a href="tel:+17863008665"><i class="fas fa-phone"></i> (786) 300-8665</a>
