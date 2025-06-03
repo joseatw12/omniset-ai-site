@@ -1,19 +1,19 @@
 :root {
     --primary-color: #2b9ddc; /* Logo blue */
     --secondary-color: #69c9f0; /* Logo light blue */
-    --accent-color: #a0d8f0; /* Sky blue accent */
-    --light-accent: #e0f7ff; /* Light cyan */
-    --text-color: #2c3e50; /* Dark text */
-    --text-color-light: #5a6c7d; /* Light gray text */
-    --light-bg: #ffffff; /* White background */
-    --card-bg: #f8fafc; /* Light gray card background */
-    --border-color: #e2e8f0;
+    --accent-color: #2b9ddc;
+    --accent-gradient: linear-gradient(135deg, #69c9f0, #2b9ddc);
+    --text-color: #f5f5f5;
+    --text-color-light: #dcdcdc;
+    --matte-bg: #0a0a0a;
+    --card-bg: #18181b;
+    --border-color: #23272f;
     --max-width: 1200px;
     --border-radius: 16px;
     --header-height: 70px;
     --scroll-margin: 120px;
-    --shadow: 0 4px 20px rgba(43, 157, 220, 0.1);
-    --shadow-hover: 0 8px 30px rgba(43, 157, 220, 0.2);
+    --shadow: 0 4px 24px rgba(43, 157, 220, 0.08);
+    --shadow-hover: 0 8px 32px rgba(43, 157, 220, 0.18);
     
     /* iPhone Safe Area Support */
     --safe-area-inset-top: env(safe-area-inset-top);
@@ -62,7 +62,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: var(--matte-bg);
     overflow-x: hidden;
     position: relative;
     font-size: 18px;
@@ -78,14 +78,12 @@ body {
 /* Header and Navigation */
 .header {
     height: var(--header-height);
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(8px);
     box-shadow: var(--shadow);
     border-bottom: 1px solid var(--border-color);
     position: fixed;
     width: 100%;
-    top: 0;
-    /* iPhone safe area support */
     top: var(--safe-area-inset-top);
     left: 0;
     right: 0;
@@ -342,7 +340,7 @@ body {
 }
 
 .logo h1 {
-    background: linear-gradient(135deg, #69c9f0, #2b9ddc);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -359,8 +357,8 @@ body {
     width: auto;
     margin-right: 0.5rem;
     border-radius: 14px;
-    box-shadow: 0 2px 8px rgba(43,157,220,0.08);
-    background: white;
+    box-shadow: 0 2px 8px rgba(43,157,220,0.12);
+    background: #18181b;
     object-fit: contain;
     vertical-align: middle;
     display: inline-block;
@@ -387,7 +385,7 @@ main {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: var(--matte-bg);
     color: var(--text-color);
     padding: 10rem 2rem 6rem;
     text-align: center;
@@ -418,7 +416,7 @@ main {
 .hero h2 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #2b9ddc, #69c9f0);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -438,8 +436,8 @@ main {
 
 .cta-button {
     display: inline-block;
-    background: linear-gradient(135deg, #69c9f0, #2b9ddc);
-    color: white;
+    background: var(--accent-gradient);
+    color: #fff;
     padding: 1.2rem 2.5rem;
     border-radius: 32px;
     text-decoration: none;
@@ -450,11 +448,12 @@ main {
     box-shadow: var(--shadow);
     min-height: 44px;
     font-size: 1.1rem;
+    border: none;
 }
 
 .cta-button:hover {
     transform: translateY(-3px) scale(1.02);
-    background: linear-gradient(135deg, #2b9ddc, #1e88c7);
+    background: linear-gradient(135deg, #2b9ddc, #69c9f0);
     box-shadow: var(--shadow-hover);
 }
 
@@ -512,7 +511,7 @@ main {
 }
 
 .section-title, .about-section h2, .solutions h2, .contact h2 {
-    background: linear-gradient(135deg, #2b9ddc, #69c9f0);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -575,7 +574,7 @@ main {
 }
 
 .features-list li {
-    background: var(--light-bg);
+    background: #16181c;
     color: var(--text-color);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
@@ -586,10 +585,11 @@ main {
 .features-list li:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-hover);
+    border-color: var(--accent-color);
 }
 
 .feature-icon {
-    background: var(--light-accent);
+    background: #10131a;
     border: 2px solid var(--accent-color);
 }
 
@@ -720,8 +720,8 @@ main {
 }
 
 .nav-links a:hover, .nav-links a.active {
-    color: var(--primary-color);
-    background: rgba(0,255,255,0.08);
+    color: var(--secondary-color);
+    background: rgba(43,157,220,0.08);
 }
 
 .nav-links a::after {
@@ -755,7 +755,7 @@ main {
 }
 
 .solution-card {
-    background: var(--light-bg);
+    background: #16181c;
     color: var(--text-color);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
@@ -770,7 +770,7 @@ main {
 }
 
 .card-icon {
-    background: linear-gradient(135deg, var(--light-accent), var(--accent-color));
+    background: #10131a;
 }
 
 .card-icon i {
@@ -795,7 +795,7 @@ main {
     padding: 6rem 2rem;
     position: relative;
     isolation: isolate;
-    background-color: var(--card-bg);
+    background-color: #18181b;
 }
 
 .contact-form {
@@ -814,7 +814,7 @@ main {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    background: var(--light-bg);
+    background: #10131a;
     color: var(--text-color);
     border-radius: var(--border-radius);
     border: 2px solid var(--border-color);
@@ -836,7 +836,7 @@ main {
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(43, 157, 220, 0.1);
+    box-shadow: 0 0 0 3px rgba(43, 157, 220, 0.18);
 }
 
 .form-group input:focus + label,
@@ -852,18 +852,19 @@ main {
 }
 
 .submit-button {
-    background: linear-gradient(135deg, #69c9f0, #2b9ddc);
-    color: white;
+    background: var(--accent-gradient);
+    color: #fff;
     border-radius: 32px;
     min-height: 44px;
     font-size: 1.1rem;
     font-weight: 600;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
+    border: none;
 }
 
 .submit-button:hover {
-    background: linear-gradient(135deg, #2b9ddc, #1e88c7);
+    background: linear-gradient(135deg, #2b9ddc, #69c9f0);
     transform: translateY(-2px) scale(1.02);
     box-shadow: var(--shadow-hover);
 }
@@ -898,8 +899,8 @@ main {
 
 /* Footer */
 .footer {
-    background: var(--card-bg);
-    color: var(--text-color);
+    background: #18181b;
+    color: var(--text-color-light);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius) var(--border-radius) 0 0;
     padding: 4rem 2rem 2rem;
@@ -1074,8 +1075,8 @@ section {
 }
 
 .nav-links a:hover, .nav-links a.active {
-    color: var(--primary-color);
-    background: rgba(0,255,255,0.08);
+    color: var(--secondary-color);
+    background: rgba(43,157,220,0.08);
 }
 
 .nav-links a::after {
@@ -1086,8 +1087,4 @@ section {
 .nav-links a.active,
 .nav-links a:active {
     color: #00e0ff;
-}
-
-.nav-links a.active::after {
-    width: 100%;
 } 
