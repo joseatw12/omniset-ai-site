@@ -73,8 +73,8 @@ let lastScroll = 0;
 const scrollThreshold = 100;
 
 function updateHeaderOnScroll() {
-    // Always use matte black background
-    header.style.backgroundColor = '#0a0a0a';
+    // Use white transparent background for light theme
+    header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
     // Hide/show header based on scroll direction (keep this logic)
     const currentScroll = window.pageYOffset;
     if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
